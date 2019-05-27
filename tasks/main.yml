@@ -1,0 +1,11 @@
+---
+# tasks file for ansible-role-rpmfusion
+
+- name: Ensure facts are set
+  setup:
+  check_mode: false
+
+- name: Install RPM fusion
+  yum:
+    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
+  when: ansible_distribution == 'Fedora'
